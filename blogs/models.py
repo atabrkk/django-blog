@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 from django.contrib.auth.models import User
 
 
@@ -10,6 +11,10 @@ class Category(models.Model):
 
     class Meta:
         verbose_name_plural = 'categories'
+
+    def save(self, *args, **kwargs):
+        self.category_slug = slugify(self.category_name)
+        super(Category, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.category_name
