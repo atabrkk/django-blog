@@ -20,8 +20,8 @@
                 <figure class="mb-4"><img class="img-fluid rounded" src="{{ single_blog.featured_image.url }}" alt="..." /></figure>
                 <!-- Post content-->
                 <section class="mb-5">
-                    <p class="fs-5 mb-4">{{ single_blog.short_description }}</p>
-                    <p class="fs-5 mb-4">{{ single_blog.blog_body }}</p>
+                    <p class="fs-5 mb-4">{{ single_blog.short_description | safe }}</p>
+                    <p class="fs-5 mb-4">{{ single_blog.blog_body | safe }}</p>
                     </section>
             </article>
         </div>

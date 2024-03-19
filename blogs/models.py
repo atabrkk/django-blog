@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextField
 
 
 class Category(models.Model):
@@ -32,8 +33,8 @@ class Blog(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     featured_image = models.ImageField(upload_to='uploads/%Y/%m/%d', default='uploads/default.jpg')
-    short_description = models.TextField(max_length=500)
-    blog_body = models.TextField(max_length=2000)
+    short_description = RichTextField(max_length=500)
+    blog_body = RichTextField(max_length=2000)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="Draft")
     is_featured = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
